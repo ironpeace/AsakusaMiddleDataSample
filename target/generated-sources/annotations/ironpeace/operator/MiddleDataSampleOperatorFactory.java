@@ -23,33 +23,28 @@ import javax.annotation.Generated;
 @Generated("OperatorFactoryClassGenerator:0.0.1") public class MiddleDataSampleOperatorFactory {
     /**
      */
-    public static final class JoinData implements Operator {
+    public static final class ConvertToMid2FromOriginalAndMid implements Operator {
         private final FlowElementResolver $;
         /**
+         * 入力された内容
          */
-        public final Source<Middata3> joined;
+        public final Source<OriginalData> original;
         /**
-         * 結合に失敗したデータ
          */
-        public final Source<Middata> missed;
-        JoinData(Source<OriginalData> orignal, Source<Middata> mid) {
-            OperatorDescription.Builder builder = new OperatorDescription.Builder(MasterJoin.class);
-            builder.declare(MiddleDataSampleOperator.class, MiddleDataSampleOperatorImpl.class, "joinData");
+        public final Source<Middata2> out;
+        ConvertToMid2FromOriginalAndMid(Source<OriginalData> orignal) {
+            OperatorDescription.Builder builder = new OperatorDescription.Builder(Convert.class);
+            builder.declare(MiddleDataSampleOperator.class, MiddleDataSampleOperatorImpl.class, 
+                    "convertToMid2FromOriginalAndMid");
             builder.declareParameter(OriginalData.class);
-            builder.declareParameter(Middata.class);
-            builder.addInput("orignal", orignal, new ShuffleKey(Arrays.asList(new String[]{"keycode"}), Arrays.asList(
-                    new ShuffleKey.Order[]{})));
-            builder.addInput("mid", mid, new ShuffleKey(Arrays.asList(new String[]{"keycode"}), Arrays.asList(new 
-                    ShuffleKey.Order[]{})));
-            builder.addOutput("joined", Middata3.class);
-            builder.addOutput("missed", mid);
-            builder.addAttribute(FlowBoundary.SHUFFLE);
+            builder.addInput("orignal", orignal);
+            builder.addOutput("original", orignal);
+            builder.addOutput("out", Middata2.class);
             builder.addAttribute(ObservationCount.DONT_CARE);
             this.$ = builder.toResolver();
             this.$.resolveInput("orignal", orignal);
-            this.$.resolveInput("mid", mid);
-            this.joined = this.$.resolveOutput("joined");
-            this.missed = this.$.resolveOutput("missed");
+            this.original = this.$.resolveOutput("original");
+            this.out = this.$.resolveOutput("out");
         }
         /**
          * この演算子の名前を設定する。
@@ -57,49 +52,43 @@ import javax.annotation.Generated;
          * @return この演算子オブジェクト (this)
          * @throws IllegalArgumentException 引数に{@code null}が指定された場合
          */
-        public MiddleDataSampleOperatorFactory.JoinData as(String newName) {
+        public MiddleDataSampleOperatorFactory.ConvertToMid2FromOriginalAndMid as(String newName) {
             this.$.setName(newName);
             return this;
         }
     }
     /**
      * @param orignal
-     * @param mid
      * @return 生成した演算子オブジェクト
-     * @see MiddleDataSampleOperator#joinData(OriginalData, Middata)
+     * @see MiddleDataSampleOperator#convertToMid2FromOriginalAndMid(OriginalData)
      */
-    public MiddleDataSampleOperatorFactory.JoinData joinData(Source<OriginalData> orignal, Source<Middata> mid) {
-        return new MiddleDataSampleOperatorFactory.JoinData(orignal, mid);
+    public MiddleDataSampleOperatorFactory.ConvertToMid2FromOriginalAndMid convertToMid2FromOriginalAndMid(Source<
+            OriginalData> orignal) {
+        return new MiddleDataSampleOperatorFactory.ConvertToMid2FromOriginalAndMid(orignal);
     }
     /**
      */
-    public static final class JoinData2 implements Operator {
+    public static final class ConvertToResult implements Operator {
         private final FlowElementResolver $;
         /**
+         * 入力された内容
          */
-        public final Source<PreResult> joined;
+        public final Source<PreResult> original;
         /**
-         * 結合に失敗したデータ
          */
-        public final Source<Middata2> missed;
-        JoinData2(Source<Middata3> mid3, Source<Middata2> mid2) {
-            OperatorDescription.Builder builder0 = new OperatorDescription.Builder(MasterJoin.class);
-            builder0.declare(MiddleDataSampleOperator.class, MiddleDataSampleOperatorImpl.class, "joinData2");
-            builder0.declareParameter(Middata3.class);
-            builder0.declareParameter(Middata2.class);
-            builder0.addInput("mid3", mid3, new ShuffleKey(Arrays.asList(new String[]{"keycode"}), Arrays.asList(new 
-                    ShuffleKey.Order[]{})));
-            builder0.addInput("mid2", mid2, new ShuffleKey(Arrays.asList(new String[]{"keycode"}), Arrays.asList(new 
-                    ShuffleKey.Order[]{})));
-            builder0.addOutput("joined", PreResult.class);
-            builder0.addOutput("missed", mid2);
-            builder0.addAttribute(FlowBoundary.SHUFFLE);
+        public final Source<Result> out;
+        ConvertToResult(Source<PreResult> pre) {
+            OperatorDescription.Builder builder0 = new OperatorDescription.Builder(Convert.class);
+            builder0.declare(MiddleDataSampleOperator.class, MiddleDataSampleOperatorImpl.class, "convertToResult");
+            builder0.declareParameter(PreResult.class);
+            builder0.addInput("pre", pre);
+            builder0.addOutput("original", pre);
+            builder0.addOutput("out", Result.class);
             builder0.addAttribute(ObservationCount.DONT_CARE);
             this.$ = builder0.toResolver();
-            this.$.resolveInput("mid3", mid3);
-            this.$.resolveInput("mid2", mid2);
-            this.joined = this.$.resolveOutput("joined");
-            this.missed = this.$.resolveOutput("missed");
+            this.$.resolveInput("pre", pre);
+            this.original = this.$.resolveOutput("original");
+            this.out = this.$.resolveOutput("out");
         }
         /**
          * この演算子の名前を設定する。
@@ -107,19 +96,18 @@ import javax.annotation.Generated;
          * @return この演算子オブジェクト (this)
          * @throws IllegalArgumentException 引数に{@code null}が指定された場合
          */
-        public MiddleDataSampleOperatorFactory.JoinData2 as(String newName0) {
+        public MiddleDataSampleOperatorFactory.ConvertToResult as(String newName0) {
             this.$.setName(newName0);
             return this;
         }
     }
     /**
-     * @param mid3
-     * @param mid2
+     * @param pre
      * @return 生成した演算子オブジェクト
-     * @see MiddleDataSampleOperator#joinData2(Middata3, Middata2)
+     * @see MiddleDataSampleOperator#convertToResult(PreResult)
      */
-    public MiddleDataSampleOperatorFactory.JoinData2 joinData2(Source<Middata3> mid3, Source<Middata2> mid2) {
-        return new MiddleDataSampleOperatorFactory.JoinData2(mid3, mid2);
+    public MiddleDataSampleOperatorFactory.ConvertToResult convertToResult(Source<PreResult> pre) {
+        return new MiddleDataSampleOperatorFactory.ConvertToResult(pre);
     }
     /**
      */
@@ -168,28 +156,33 @@ import javax.annotation.Generated;
     }
     /**
      */
-    public static final class ConvertToMid2FromOriginalAndMid implements Operator {
+    public static final class JoinData implements Operator {
         private final FlowElementResolver $;
         /**
-         * 入力された内容
          */
-        public final Source<OriginalData> original;
+        public final Source<Middata3> joined;
         /**
+         * 結合に失敗したデータ
          */
-        public final Source<Middata2> out;
-        ConvertToMid2FromOriginalAndMid(Source<OriginalData> orignal) {
-            OperatorDescription.Builder builder2 = new OperatorDescription.Builder(Convert.class);
-            builder2.declare(MiddleDataSampleOperator.class, MiddleDataSampleOperatorImpl.class, 
-                    "convertToMid2FromOriginalAndMid");
+        public final Source<Middata> missed;
+        JoinData(Source<OriginalData> orignal, Source<Middata> mid) {
+            OperatorDescription.Builder builder2 = new OperatorDescription.Builder(MasterJoin.class);
+            builder2.declare(MiddleDataSampleOperator.class, MiddleDataSampleOperatorImpl.class, "joinData");
             builder2.declareParameter(OriginalData.class);
-            builder2.addInput("orignal", orignal);
-            builder2.addOutput("original", orignal);
-            builder2.addOutput("out", Middata2.class);
+            builder2.declareParameter(Middata.class);
+            builder2.addInput("orignal", orignal, new ShuffleKey(Arrays.asList(new String[]{"keycode"}), Arrays.asList(
+                    new ShuffleKey.Order[]{})));
+            builder2.addInput("mid", mid, new ShuffleKey(Arrays.asList(new String[]{"keycode"}), Arrays.asList(new 
+                    ShuffleKey.Order[]{})));
+            builder2.addOutput("joined", Middata3.class);
+            builder2.addOutput("missed", mid);
+            builder2.addAttribute(FlowBoundary.SHUFFLE);
             builder2.addAttribute(ObservationCount.DONT_CARE);
             this.$ = builder2.toResolver();
             this.$.resolveInput("orignal", orignal);
-            this.original = this.$.resolveOutput("original");
-            this.out = this.$.resolveOutput("out");
+            this.$.resolveInput("mid", mid);
+            this.joined = this.$.resolveOutput("joined");
+            this.missed = this.$.resolveOutput("missed");
         }
         /**
          * この演算子の名前を設定する。
@@ -197,43 +190,49 @@ import javax.annotation.Generated;
          * @return この演算子オブジェクト (this)
          * @throws IllegalArgumentException 引数に{@code null}が指定された場合
          */
-        public MiddleDataSampleOperatorFactory.ConvertToMid2FromOriginalAndMid as(String newName2) {
+        public MiddleDataSampleOperatorFactory.JoinData as(String newName2) {
             this.$.setName(newName2);
             return this;
         }
     }
     /**
      * @param orignal
+     * @param mid
      * @return 生成した演算子オブジェクト
-     * @see MiddleDataSampleOperator#convertToMid2FromOriginalAndMid(OriginalData)
+     * @see MiddleDataSampleOperator#joinData(OriginalData, Middata)
      */
-    public MiddleDataSampleOperatorFactory.ConvertToMid2FromOriginalAndMid convertToMid2FromOriginalAndMid(Source<
-            OriginalData> orignal) {
-        return new MiddleDataSampleOperatorFactory.ConvertToMid2FromOriginalAndMid(orignal);
+    public MiddleDataSampleOperatorFactory.JoinData joinData(Source<OriginalData> orignal, Source<Middata> mid) {
+        return new MiddleDataSampleOperatorFactory.JoinData(orignal, mid);
     }
     /**
      */
-    public static final class ConvertToResult implements Operator {
+    public static final class JoinData2 implements Operator {
         private final FlowElementResolver $;
         /**
-         * 入力された内容
          */
-        public final Source<PreResult> original;
+        public final Source<PreResult> joined;
         /**
+         * 結合に失敗したデータ
          */
-        public final Source<Result> out;
-        ConvertToResult(Source<PreResult> pre) {
-            OperatorDescription.Builder builder3 = new OperatorDescription.Builder(Convert.class);
-            builder3.declare(MiddleDataSampleOperator.class, MiddleDataSampleOperatorImpl.class, "convertToResult");
-            builder3.declareParameter(PreResult.class);
-            builder3.addInput("pre", pre);
-            builder3.addOutput("original", pre);
-            builder3.addOutput("out", Result.class);
+        public final Source<Middata2> missed;
+        JoinData2(Source<Middata3> mid3, Source<Middata2> mid2) {
+            OperatorDescription.Builder builder3 = new OperatorDescription.Builder(MasterJoin.class);
+            builder3.declare(MiddleDataSampleOperator.class, MiddleDataSampleOperatorImpl.class, "joinData2");
+            builder3.declareParameter(Middata3.class);
+            builder3.declareParameter(Middata2.class);
+            builder3.addInput("mid3", mid3, new ShuffleKey(Arrays.asList(new String[]{"keycode"}), Arrays.asList(new 
+                    ShuffleKey.Order[]{})));
+            builder3.addInput("mid2", mid2, new ShuffleKey(Arrays.asList(new String[]{"keycode"}), Arrays.asList(new 
+                    ShuffleKey.Order[]{})));
+            builder3.addOutput("joined", PreResult.class);
+            builder3.addOutput("missed", mid2);
+            builder3.addAttribute(FlowBoundary.SHUFFLE);
             builder3.addAttribute(ObservationCount.DONT_CARE);
             this.$ = builder3.toResolver();
-            this.$.resolveInput("pre", pre);
-            this.original = this.$.resolveOutput("original");
-            this.out = this.$.resolveOutput("out");
+            this.$.resolveInput("mid3", mid3);
+            this.$.resolveInput("mid2", mid2);
+            this.joined = this.$.resolveOutput("joined");
+            this.missed = this.$.resolveOutput("missed");
         }
         /**
          * この演算子の名前を設定する。
@@ -241,17 +240,18 @@ import javax.annotation.Generated;
          * @return この演算子オブジェクト (this)
          * @throws IllegalArgumentException 引数に{@code null}が指定された場合
          */
-        public MiddleDataSampleOperatorFactory.ConvertToResult as(String newName3) {
+        public MiddleDataSampleOperatorFactory.JoinData2 as(String newName3) {
             this.$.setName(newName3);
             return this;
         }
     }
     /**
-     * @param pre
+     * @param mid3
+     * @param mid2
      * @return 生成した演算子オブジェクト
-     * @see MiddleDataSampleOperator#convertToResult(PreResult)
+     * @see MiddleDataSampleOperator#joinData2(Middata3, Middata2)
      */
-    public MiddleDataSampleOperatorFactory.ConvertToResult convertToResult(Source<PreResult> pre) {
-        return new MiddleDataSampleOperatorFactory.ConvertToResult(pre);
+    public MiddleDataSampleOperatorFactory.JoinData2 joinData2(Source<Middata3> mid3, Source<Middata2> mid2) {
+        return new MiddleDataSampleOperatorFactory.JoinData2(mid3, mid2);
     }
 }
