@@ -7,7 +7,7 @@ public class ResultToCsv extends  AbstractResultCsvOutputDescription{
 
 	@Override
 	public String getBasePath() {
-		return "ironpeace";
+		return "ironpeace/output/";
 	}
 
 	@Override

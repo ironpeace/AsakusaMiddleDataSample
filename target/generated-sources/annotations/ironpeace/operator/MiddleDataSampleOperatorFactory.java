@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 @Generated("OperatorFactoryClassGenerator:0.0.1") public class MiddleDataSampleOperatorFactory {
     /**
      */
-    public static final class ConvertToMid2FromOriginalAndMid implements Operator {
+    public static final class ConvertToMidFromOriginal implements Operator {
         private final FlowElementResolver $;
         /**
          * 入力された内容
@@ -31,15 +31,15 @@ import javax.annotation.Generated;
         public final Source<OriginalData> original;
         /**
          */
-        public final Source<Middata2> out;
-        ConvertToMid2FromOriginalAndMid(Source<OriginalData> orignal) {
+        public final Source<Middata> out;
+        ConvertToMidFromOriginal(Source<OriginalData> orignal) {
             OperatorDescription.Builder builder = new OperatorDescription.Builder(Convert.class);
             builder.declare(MiddleDataSampleOperator.class, MiddleDataSampleOperatorImpl.class, 
-                    "convertToMid2FromOriginalAndMid");
+                    "convertToMidFromOriginal");
             builder.declareParameter(OriginalData.class);
             builder.addInput("orignal", orignal);
             builder.addOutput("original", orignal);
-            builder.addOutput("out", Middata2.class);
+            builder.addOutput("out", Middata.class);
             builder.addAttribute(ObservationCount.DONT_CARE);
             this.$ = builder.toResolver();
             this.$.resolveInput("orignal", orignal);
@@ -52,8 +52,53 @@ import javax.annotation.Generated;
          * @return この演算子オブジェクト (this)
          * @throws IllegalArgumentException 引数に{@code null}が指定された場合
          */
-        public MiddleDataSampleOperatorFactory.ConvertToMid2FromOriginalAndMid as(String newName) {
+        public MiddleDataSampleOperatorFactory.ConvertToMidFromOriginal as(String newName) {
             this.$.setName(newName);
+            return this;
+        }
+    }
+    /**
+     * @param orignal
+     * @return 生成した演算子オブジェクト
+     * @see MiddleDataSampleOperator#convertToMidFromOriginal(OriginalData)
+     */
+    public MiddleDataSampleOperatorFactory.ConvertToMidFromOriginal convertToMidFromOriginal(Source<OriginalData> 
+            orignal) {
+        return new MiddleDataSampleOperatorFactory.ConvertToMidFromOriginal(orignal);
+    }
+    /**
+     */
+    public static final class ConvertToMid2FromOriginalAndMid implements Operator {
+        private final FlowElementResolver $;
+        /**
+         * 入力された内容
+         */
+        public final Source<OriginalData> original;
+        /**
+         */
+        public final Source<Middata2> out;
+        ConvertToMid2FromOriginalAndMid(Source<OriginalData> orignal) {
+            OperatorDescription.Builder builder0 = new OperatorDescription.Builder(Convert.class);
+            builder0.declare(MiddleDataSampleOperator.class, MiddleDataSampleOperatorImpl.class, 
+                    "convertToMid2FromOriginalAndMid");
+            builder0.declareParameter(OriginalData.class);
+            builder0.addInput("orignal", orignal);
+            builder0.addOutput("original", orignal);
+            builder0.addOutput("out", Middata2.class);
+            builder0.addAttribute(ObservationCount.DONT_CARE);
+            this.$ = builder0.toResolver();
+            this.$.resolveInput("orignal", orignal);
+            this.original = this.$.resolveOutput("original");
+            this.out = this.$.resolveOutput("out");
+        }
+        /**
+         * この演算子の名前を設定する。
+         * @param newName0 設定する名前
+         * @return この演算子オブジェクト (this)
+         * @throws IllegalArgumentException 引数に{@code null}が指定された場合
+         */
+        public MiddleDataSampleOperatorFactory.ConvertToMid2FromOriginalAndMid as(String newName0) {
+            this.$.setName(newName0);
             return this;
         }
     }
@@ -78,26 +123,26 @@ import javax.annotation.Generated;
          */
         public final Source<Result> out;
         ConvertToResult(Source<PreResult> pre) {
-            OperatorDescription.Builder builder0 = new OperatorDescription.Builder(Convert.class);
-            builder0.declare(MiddleDataSampleOperator.class, MiddleDataSampleOperatorImpl.class, "convertToResult");
-            builder0.declareParameter(PreResult.class);
-            builder0.addInput("pre", pre);
-            builder0.addOutput("original", pre);
-            builder0.addOutput("out", Result.class);
-            builder0.addAttribute(ObservationCount.DONT_CARE);
-            this.$ = builder0.toResolver();
+            OperatorDescription.Builder builder1 = new OperatorDescription.Builder(Convert.class);
+            builder1.declare(MiddleDataSampleOperator.class, MiddleDataSampleOperatorImpl.class, "convertToResult");
+            builder1.declareParameter(PreResult.class);
+            builder1.addInput("pre", pre);
+            builder1.addOutput("original", pre);
+            builder1.addOutput("out", Result.class);
+            builder1.addAttribute(ObservationCount.DONT_CARE);
+            this.$ = builder1.toResolver();
             this.$.resolveInput("pre", pre);
             this.original = this.$.resolveOutput("original");
             this.out = this.$.resolveOutput("out");
         }
         /**
          * この演算子の名前を設定する。
-         * @param newName0 設定する名前
+         * @param newName1 設定する名前
          * @return この演算子オブジェクト (this)
          * @throws IllegalArgumentException 引数に{@code null}が指定された場合
          */
-        public MiddleDataSampleOperatorFactory.ConvertToResult as(String newName0) {
-            this.$.setName(newName0);
+        public MiddleDataSampleOperatorFactory.ConvertToResult as(String newName1) {
+            this.$.setName(newName1);
             return this;
         }
     }
@@ -108,51 +153,6 @@ import javax.annotation.Generated;
      */
     public MiddleDataSampleOperatorFactory.ConvertToResult convertToResult(Source<PreResult> pre) {
         return new MiddleDataSampleOperatorFactory.ConvertToResult(pre);
-    }
-    /**
-     */
-    public static final class ConvertToMidFromOriginal implements Operator {
-        private final FlowElementResolver $;
-        /**
-         * 入力された内容
-         */
-        public final Source<OriginalData> original;
-        /**
-         */
-        public final Source<Middata> out;
-        ConvertToMidFromOriginal(Source<OriginalData> orignal) {
-            OperatorDescription.Builder builder1 = new OperatorDescription.Builder(Convert.class);
-            builder1.declare(MiddleDataSampleOperator.class, MiddleDataSampleOperatorImpl.class, 
-                    "convertToMidFromOriginal");
-            builder1.declareParameter(OriginalData.class);
-            builder1.addInput("orignal", orignal);
-            builder1.addOutput("original", orignal);
-            builder1.addOutput("out", Middata.class);
-            builder1.addAttribute(ObservationCount.DONT_CARE);
-            this.$ = builder1.toResolver();
-            this.$.resolveInput("orignal", orignal);
-            this.original = this.$.resolveOutput("original");
-            this.out = this.$.resolveOutput("out");
-        }
-        /**
-         * この演算子の名前を設定する。
-         * @param newName1 設定する名前
-         * @return この演算子オブジェクト (this)
-         * @throws IllegalArgumentException 引数に{@code null}が指定された場合
-         */
-        public MiddleDataSampleOperatorFactory.ConvertToMidFromOriginal as(String newName1) {
-            this.$.setName(newName1);
-            return this;
-        }
-    }
-    /**
-     * @param orignal
-     * @return 生成した演算子オブジェクト
-     * @see MiddleDataSampleOperator#convertToMidFromOriginal(OriginalData)
-     */
-    public MiddleDataSampleOperatorFactory.ConvertToMidFromOriginal convertToMidFromOriginal(Source<OriginalData> 
-            orignal) {
-        return new MiddleDataSampleOperatorFactory.ConvertToMidFromOriginal(orignal);
     }
     /**
      */

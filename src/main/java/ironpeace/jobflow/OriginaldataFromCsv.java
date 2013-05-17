@@ -6,7 +6,7 @@ public class OriginaldataFromCsv extends AbstractOriginalDataCsvInputDescription
 
 	@Override
 	public String getBasePath() {
-		return "ironpeace";
+		return "ironpeace/input/";
 	}
 
 	@Override
