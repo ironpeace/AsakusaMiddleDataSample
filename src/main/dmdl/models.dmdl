@@ -1,0 +1,116 @@
+"original_data"
+@directio.csv(
+    has_header = TRUE
+)
+original_data = {
+    "keycode"
+    @directio.csv.field(name = "keycode")
+    keycode : INT;
+
+    "data1"
+    @directio.csv.field(name = "data1")
+    data1 : LONG;
+
+    "data2"
+    @directio.csv.field(name = "data2")
+    data2 : LONG;
+
+    "data3"
+    @directio.csv.field(name = "data3")
+    data3 : LONG;
+};
+
+middata = {
+    "keycode"
+    @directio.csv.field(name = "keycode")
+    keycode : INT;
+
+    "mid1"
+    @directio.csv.field(name = "mid1")
+    mid1 : LONG;
+
+    "mid2"
+    @directio.csv.field(name = "mid2")
+    mid2 : LONG;
+};
+
+middata2 = {
+    "keycode"
+    @directio.csv.field(name = "keycode")
+    keycode : INT;
+
+    "alert1"
+    @directio.csv.field(name = "alert1")
+    alert1 : TEXT;
+
+    "alert2"
+    @directio.csv.field(name = "alert2")
+    alert2 : TEXT;
+};
+
+
+joined middata3
+= original_data -> {
+	keycode -> keycode;
+	data1 -> data1;
+	data2 -> data2;
+	data3 -> data3;
+} % keycode
++ middata -> {
+	keycode -> keycode;
+	mid1 -> mid1;
+	mid2 -> mid2;
+} % keycode;
+
+joined pre_result
+= middata3 -> {
+	keycode -> keycode;
+	data1 -> data1;
+	data2 -> data2;
+	data3 -> data3;
+	mid1 -> mid1;
+	mid2 -> mid2;
+} % keycode
++ middata2 -> {
+	keycode -> keycode;
+	alert1 -> alert1;
+	alert2 -> alert2;
+} % keycode;
+
+"result"
+@directio.csv(
+    has_header = TRUE
+)
+result = {
+    "keycode"
+    @directio.csv.field(name = "keycode")
+    keycode : INT;
+
+    "data1"
+    @directio.csv.field(name = "data1")
+    data1 : LONG;
+
+    "data2"
+    @directio.csv.field(name = "data2")
+    data2 : LONG;
+
+    "data3"
+    @directio.csv.field(name = "data3")
+    data3 : LONG;
+
+    "mid1"
+    @directio.csv.field(name = "mid1")
+    mid1 : LONG;
+
+    "mid2"
+    @directio.csv.field(name = "mid2")
+    mid2 : LONG;
+
+    "alert1"
+    @directio.csv.field(name = "alert1")
+    alert1 : TEXT;
+
+    "alert2"
+    @directio.csv.field(name = "alert2")
+    alert2 : TEXT;
+};
