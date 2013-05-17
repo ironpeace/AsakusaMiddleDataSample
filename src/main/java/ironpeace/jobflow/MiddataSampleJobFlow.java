@@ -6,8 +6,8 @@ import ironpeace.operator.MiddleDataSampleOperatorFactory;
 import ironpeace.operator.MiddleDataSampleOperatorFactory.ConvertToMid2FromOriginalAndMid;
 import ironpeace.operator.MiddleDataSampleOperatorFactory.ConvertToMidFromOriginal;
 import ironpeace.operator.MiddleDataSampleOperatorFactory.ConvertToResult;
-import ironpeace.operator.MiddleDataSampleOperatorFactory.JoinData;
-import ironpeace.operator.MiddleDataSampleOperatorFactory.JoinData2;
+import ironpeace.operator.MiddleDataSampleOperatorFactory.JoinMid3AndMid2;
+import ironpeace.operator.MiddleDataSampleOperatorFactory.JoinOriginalAndMid;
 
 import com.asakusafw.vocabulary.flow.Export;
 import com.asakusafw.vocabulary.flow.FlowDescription;
@@ -36,22 +36,30 @@ public class MiddataSampleJobFlow extends FlowDescription {
 
 	@Override
 	protected void describe() {
-		MiddleDataSampleOperatorFactory operators = new MiddleDataSampleOperatorFactory();
+		MiddleDataSampleOperatorFactory operators
+			= new MiddleDataSampleOperatorFactory();
 		
-		ConvertToMidFromOriginal convert = operators.convertToMidFromOriginal(originaldata);
-		coreOp.stop(convert.original);
+		ConvertToMidFromOriginal convertedMid
+			= operators.convertToMidFromOriginal(originaldata);
+		coreOp.stop(convertedMid.original);
 		
-		ConvertToMid2FromOriginalAndMid convert2 = operators.convertToMid2FromOriginalAndMid(originaldata);
-		coreOp.stop(convert2.original);
+		ConvertToMid2FromOriginalAndMid convertedMid2
+			= operators.convertToMid2FromOriginalAndMid(originaldata);
+		coreOp.stop(convertedMid2.original);
 		
-		JoinData joindata = operators.joinData(originaldata, convert.out);
+		JoinOriginalAndMid joinedMid3
+			= operators.joinOriginalAndMid(originaldata, convertedMid.out);
+		coreOp.stop(joinedMid3.missed);
+
+		JoinMid3AndMid2 joinedPreResult
+			= operators.joinMid3AndMid2(joinedMid3.joined, convertedMid2.out);
+		coreOp.stop(joinedPreResult.missed);
 		
-		JoinData2 joindata2 = operators.joinData2(joindata.joined, convert2.out);
+		ConvertToResult convertedResult
+			= operators.convertToResult(joinedPreResult.joined);
+		coreOp.stop(convertedResult.original);
 		
-		ConvertToResult convert3 = operators.convertToResult(joindata2.joined);
-		coreOp.stop(convert3.original);
-		
-		result.add(convert3.out);
+		result.add(convertedResult.out);
 	}
 
 }

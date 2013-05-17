@@ -38,10 +38,10 @@ public abstract class MiddleDataSampleOperator {
 	}
 	
 	@MasterJoin
-	public abstract Middata3 joinData(OriginalData orignal, Middata mid);
+	public abstract Middata3 joinOriginalAndMid(OriginalData orignal, Middata mid);
 	
 	@MasterJoin
-	public abstract PreResult joinData2(Middata3 mid3, Middata2 mid2);
+	public abstract PreResult joinMid3AndMid2(Middata3 mid3, Middata2 mid2);
 	
 	@Convert
 	public Result convertToResult(PreResult pre){

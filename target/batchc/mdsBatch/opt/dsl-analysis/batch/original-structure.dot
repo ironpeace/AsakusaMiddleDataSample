@@ -1,0 +1,16 @@
+digraph {
+    rankdir = LR;
+    "4eb8514a-af59-4f42-b269-bfec0c8d8bcc" [shape=box, label="Batch\nMiddleDataSampleBatch"];
+    "69a80891-f583-4330-9af5-af00c831f427" [shape=box, label="JobFlow\nMiddataSampleJobFlow"];
+    "51c07a14-0791-4da0-8430-113261c5ee70" [shape=box, label="MasterJoin\nMiddleDataSampleOperator#joinMid3AndMid2"];
+    "69a80891-f583-4330-9af5-af00c831f427" -> "51c07a14-0791-4da0-8430-113261c5ee70";
+    "91c2b363-0143-4d4b-a63f-5ba1532d4cce" [shape=box, label="Convert\nMiddleDataSampleOperator#convertToMid2FromOriginalAndMid"];
+    "69a80891-f583-4330-9af5-af00c831f427" -> "91c2b363-0143-4d4b-a63f-5ba1532d4cce";
+    "3d0d94a5-0379-4a5e-af34-6be5ca119446" [shape=box, label="MasterJoin\nMiddleDataSampleOperator#joinOriginalAndMid"];
+    "69a80891-f583-4330-9af5-af00c831f427" -> "3d0d94a5-0379-4a5e-af34-6be5ca119446";
+    "1e7c775e-bc95-4aad-aac9-69d2b08c0e84" [shape=box, label="Convert\nMiddleDataSampleOperator#convertToResult"];
+    "69a80891-f583-4330-9af5-af00c831f427" -> "1e7c775e-bc95-4aad-aac9-69d2b08c0e84";
+    "2fe63cdd-8601-4114-a99b-9a298a558219" [shape=box, label="Convert\nMiddleDataSampleOperator#convertToMidFromOriginal"];
+    "69a80891-f583-4330-9af5-af00c831f427" -> "2fe63cdd-8601-4114-a99b-9a298a558219";
+    "4eb8514a-af59-4f42-b269-bfec0c8d8bcc" -> "69a80891-f583-4330-9af5-af00c831f427";
+}

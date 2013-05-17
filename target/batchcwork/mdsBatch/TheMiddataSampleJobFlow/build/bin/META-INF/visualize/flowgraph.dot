@@ -1,0 +1,27 @@
+digraph {
+    "07ff917d-b2a3-4abd-a8fc-4fb5b1eb7093" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinMid3AndMid2"];
+    "7ac86eab-b7d3-4603-ab13-613bda037e93" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToMid2FromOriginalAndMid"];
+    "34fbf71b-8331-46dd-a3b0-f3b4fc26c46b" [shape=point];
+    "8414a71f-a015-4387-a0a8-c01a27eef809" [shape=invhouse, label="result"];
+    "8bf6ceda-c4ac-4db6-9cd1-51edc5856a87" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToResult"];
+    "6aa9adb3-3b94-46ab-95c6-0491eeca9357" [shape=point];
+    "7f0c2d72-83db-4c5e-b0ed-b85ccde4b039" [shape=invhouse, label="orignaldata"];
+    "beb8e5e2-0536-41ae-95b1-ba7682be7537" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinOriginalAndMid"];
+    "7799e9e0-4ec7-42b9-b7d9-b590236c4284" [shape=point];
+    "167526d3-68ee-4254-8f00-8077ed26855f" [shape=point];
+    "086eee55-f76e-4c67-ad13-01e04b05da4f" [shape=point];
+    "29fe9212-cde8-4538-8c02-1c9c3f708001" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToMidFromOriginal"];
+    "07ff917d-b2a3-4abd-a8fc-4fb5b1eb7093" -> "8bf6ceda-c4ac-4db6-9cd1-51edc5856a87" [label="joined>pre"];
+    "07ff917d-b2a3-4abd-a8fc-4fb5b1eb7093" -> "7799e9e0-4ec7-42b9-b7d9-b590236c4284" [label="missed>in"];
+    "7ac86eab-b7d3-4603-ab13-613bda037e93" -> "167526d3-68ee-4254-8f00-8077ed26855f" [label="original>in"];
+    "7ac86eab-b7d3-4603-ab13-613bda037e93" -> "07ff917d-b2a3-4abd-a8fc-4fb5b1eb7093" [label="out>mid2"];
+    "8bf6ceda-c4ac-4db6-9cd1-51edc5856a87" -> "34fbf71b-8331-46dd-a3b0-f3b4fc26c46b" [label="original>in"];
+    "8bf6ceda-c4ac-4db6-9cd1-51edc5856a87" -> "8414a71f-a015-4387-a0a8-c01a27eef809" [label="out>port"];
+    "7f0c2d72-83db-4c5e-b0ed-b85ccde4b039" -> "7ac86eab-b7d3-4603-ab13-613bda037e93" [label="port>orignal"];
+    "7f0c2d72-83db-4c5e-b0ed-b85ccde4b039" -> "beb8e5e2-0536-41ae-95b1-ba7682be7537" [label="port>orignal"];
+    "7f0c2d72-83db-4c5e-b0ed-b85ccde4b039" -> "29fe9212-cde8-4538-8c02-1c9c3f708001" [label="port>orignal"];
+    "beb8e5e2-0536-41ae-95b1-ba7682be7537" -> "07ff917d-b2a3-4abd-a8fc-4fb5b1eb7093" [label="joined>mid3"];
+    "beb8e5e2-0536-41ae-95b1-ba7682be7537" -> "086eee55-f76e-4c67-ad13-01e04b05da4f" [label="missed>in"];
+    "29fe9212-cde8-4538-8c02-1c9c3f708001" -> "6aa9adb3-3b94-46ab-95c6-0491eeca9357" [label="original>in"];
+    "29fe9212-cde8-4538-8c02-1c9c3f708001" -> "beb8e5e2-0536-41ae-95b1-ba7682be7537" [label="out>mid"];
+}

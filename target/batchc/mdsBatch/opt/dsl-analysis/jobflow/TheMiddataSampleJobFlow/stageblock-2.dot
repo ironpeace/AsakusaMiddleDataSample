@@ -1,0 +1,19 @@
+digraph {
+    "df17c6c8-e5e5-480d-8b51-6510c2c82180" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinOriginalAndMid"];
+    subgraph "cluster_4d40630f-07f3-4d72-8430-0cfea25353d8" {
+        label = "stage0002";
+        style = bold;
+        "f194c7f0-6dc2-47e5-a42a-5f83f2ebc70d" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToMid2FromOriginalAndMid"];
+        "b11ecfa8-248a-4255-b6e9-ad1268183ea1" [shape=point];
+        "6fd82d81-d70d-4530-92c6-ff2a18c1ecfc" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinMid3AndMid2"];
+        "194c4eaf-7268-4bdd-8d20-9bdb2d046f82" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToResult"];
+    }
+    "0b6fa51a-3f86-4052-8315-8ded660daf2f" [shape=invhouse, label="orignaldata"];
+    "82b6c26b-f2d8-4d92-820d-f3ef9316487b" [shape=invhouse, label="result"];
+    "0b6fa51a-3f86-4052-8315-8ded660daf2f" -> "f194c7f0-6dc2-47e5-a42a-5f83f2ebc70d" [label="port>orignal"];
+    "df17c6c8-e5e5-480d-8b51-6510c2c82180" -> "b11ecfa8-248a-4255-b6e9-ad1268183ea1" [label="joined>in"];
+    "f194c7f0-6dc2-47e5-a42a-5f83f2ebc70d" -> "6fd82d81-d70d-4530-92c6-ff2a18c1ecfc" [label="out>mid2"];
+    "b11ecfa8-248a-4255-b6e9-ad1268183ea1" -> "6fd82d81-d70d-4530-92c6-ff2a18c1ecfc" [label="out>mid3"];
+    "194c4eaf-7268-4bdd-8d20-9bdb2d046f82" -> "82b6c26b-f2d8-4d92-820d-f3ef9316487b" [label="out>port"];
+    "6fd82d81-d70d-4530-92c6-ff2a18c1ecfc" -> "194c4eaf-7268-4bdd-8d20-9bdb2d046f82" [label="joined>pre"];
+}

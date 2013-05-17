@@ -16,10 +16,10 @@ import javax.annotation.Generated;
     public MiddleDataSampleOperatorImpl() {
         return;
     }
-    @Override public Middata3 joinData(OriginalData orignal, Middata mid) {
+    @Override public Middata3 joinOriginalAndMid(OriginalData orignal, Middata mid) {
         throw new UnsupportedOperationException("マスタ結合演算子は組み込みの方法で処理されます");
     }
-    @Override public PreResult joinData2(Middata3 mid3, Middata2 mid2) {
+    @Override public PreResult joinMid3AndMid2(Middata3 mid3, Middata2 mid2) {
         throw new UnsupportedOperationException("マスタ結合演算子は組み込みの方法で処理されます");
     }
 }

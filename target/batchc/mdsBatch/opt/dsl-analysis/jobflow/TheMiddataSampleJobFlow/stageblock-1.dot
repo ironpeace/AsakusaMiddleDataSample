@@ -1,0 +1,16 @@
+digraph {
+    subgraph "cluster_2c06d895-c8d1-4c72-bc6d-1386eed4320b" {
+        label = "stage0001";
+        style = bold;
+        "5e86c824-81e5-4447-825a-abbb48691cf4" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinOriginalAndMid"];
+        "ba521700-0e4e-4e22-9123-f7a54d49ef6a" [shape=point];
+        "b5e5c9c3-59f3-4e5c-8590-175b0231e5a4" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToMidFromOriginal"];
+    }
+    "594f8ab9-770f-4d79-843f-118c9c101175" [shape=point];
+    "f9755a16-9f87-408f-846f-2f5c61e2830e" [shape=invhouse, label="orignaldata"];
+    "ba521700-0e4e-4e22-9123-f7a54d49ef6a" -> "5e86c824-81e5-4447-825a-abbb48691cf4" [label="out>orignal"];
+    "b5e5c9c3-59f3-4e5c-8590-175b0231e5a4" -> "5e86c824-81e5-4447-825a-abbb48691cf4" [label="out>mid"];
+    "5e86c824-81e5-4447-825a-abbb48691cf4" -> "594f8ab9-770f-4d79-843f-118c9c101175" [label="joined>in"];
+    "f9755a16-9f87-408f-846f-2f5c61e2830e" -> "ba521700-0e4e-4e22-9123-f7a54d49ef6a" [label="port>in"];
+    "f9755a16-9f87-408f-846f-2f5c61e2830e" -> "b5e5c9c3-59f3-4e5c-8590-175b0231e5a4" [label="port>orignal"];
+}
