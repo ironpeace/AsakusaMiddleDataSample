@@ -1,7 +1,10 @@
 
 中間ファイルを使うバッチアプリケーションのサンプルです。
 
+```
 mvn archetype:generate -DarchetypeCatalog=http://asakusafw.s3.amazonaws.com/maven/archetype-catalog-0.4.xml
+```
+
 から作成しています。
 
 
