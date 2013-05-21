@@ -5,10 +5,10 @@ flow: TheMiddataSampleJobFlow
     output:
         result (ironpeace.jobflow.ResultToCsv)
     flow: ironpeace.jobflow.MiddataSampleJobFlow
+        operator: ironpeace.operator.MiddleDataSampleOperator#convertToMid2FromMid3([class ironpeace.modelgen.dmdl.model.Middata3])[]
         operator: ironpeace.operator.MiddleDataSampleOperator#joinMid3AndMid2([class ironpeace.modelgen.dmdl.model.Middata3, class ironpeace.modelgen.dmdl.model.Middata2])[]
-        operator: ironpeace.operator.MiddleDataSampleOperator#convertToMid2FromOriginalAndMid([class ironpeace.modelgen.dmdl.model.OriginalData])[]
-        input: InputDescription{name=orignaldata, type=class ironpeace.modelgen.dmdl.model.OriginalData}
         output: OutputDescription{name=result, type=class ironpeace.modelgen.dmdl.model.Result}
-        operator: ironpeace.operator.MiddleDataSampleOperator#joinOriginalAndMid([class ironpeace.modelgen.dmdl.model.OriginalData, class ironpeace.modelgen.dmdl.model.Middata])[]
+        input: InputDescription{name=orignaldata, type=class ironpeace.modelgen.dmdl.model.OriginalData}
         operator: ironpeace.operator.MiddleDataSampleOperator#convertToResult([class ironpeace.modelgen.dmdl.model.PreResult])[]
         operator: ironpeace.operator.MiddleDataSampleOperator#convertToMidFromOriginal([class ironpeace.modelgen.dmdl.model.OriginalData])[]
+        operator: ironpeace.operator.MiddleDataSampleOperator#joinOriginalAndMid([class ironpeace.modelgen.dmdl.model.OriginalData, class ironpeace.modelgen.dmdl.model.Middata])[]

@@ -34,6 +34,19 @@ middata = {
     mid2 : LONG;
 };
 
+joined middata3
+= original_data -> {
+	keycode -> keycode;
+	data1 -> data1;
+	data2 -> data2;
+	data3 -> data3;
+} % keycode
++ middata -> {
+	keycode -> keycode;
+	mid1 -> mid1;
+	mid2 -> mid2;
+} % keycode;
+
 middata2 = {
     "keycode"
     @directio.csv.field(name = "keycode")
@@ -47,20 +60,6 @@ middata2 = {
     @directio.csv.field(name = "alert2")
     alert2 : TEXT;
 };
-
-
-joined middata3
-= original_data -> {
-	keycode -> keycode;
-	data1 -> data1;
-	data2 -> data2;
-	data3 -> data3;
-} % keycode
-+ middata -> {
-	keycode -> keycode;
-	mid1 -> mid1;
-	mid2 -> mid2;
-} % keycode;
 
 joined pre_result
 = middata3 -> {

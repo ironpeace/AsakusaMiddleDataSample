@@ -1,16 +1,18 @@
 digraph {
-    subgraph "cluster_2c06d895-c8d1-4c72-bc6d-1386eed4320b" {
+    "7d96dbf3-0c67-44b1-87b6-31978346cbf1" [shape=point];
+    subgraph "cluster_dfcd7173-b310-447f-a296-3708320141ec" {
         label = "stage0001";
         style = bold;
-        "5e86c824-81e5-4447-825a-abbb48691cf4" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinOriginalAndMid"];
-        "ba521700-0e4e-4e22-9123-f7a54d49ef6a" [shape=point];
-        "b5e5c9c3-59f3-4e5c-8590-175b0231e5a4" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToMidFromOriginal"];
+        "6f72632e-1e3b-4981-ac55-c7061428a8b0" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinOriginalAndMid"];
+        "b126d90e-09ee-4c98-a36d-f7af4ad4f0ab" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToMidFromOriginal"];
+        "7c3102a6-f892-4b67-8043-b822e9c3b01d" [shape=point];
     }
-    "594f8ab9-770f-4d79-843f-118c9c101175" [shape=point];
-    "f9755a16-9f87-408f-846f-2f5c61e2830e" [shape=invhouse, label="orignaldata"];
-    "ba521700-0e4e-4e22-9123-f7a54d49ef6a" -> "5e86c824-81e5-4447-825a-abbb48691cf4" [label="out>orignal"];
-    "b5e5c9c3-59f3-4e5c-8590-175b0231e5a4" -> "5e86c824-81e5-4447-825a-abbb48691cf4" [label="out>mid"];
-    "5e86c824-81e5-4447-825a-abbb48691cf4" -> "594f8ab9-770f-4d79-843f-118c9c101175" [label="joined>in"];
-    "f9755a16-9f87-408f-846f-2f5c61e2830e" -> "ba521700-0e4e-4e22-9123-f7a54d49ef6a" [label="port>in"];
-    "f9755a16-9f87-408f-846f-2f5c61e2830e" -> "b5e5c9c3-59f3-4e5c-8590-175b0231e5a4" [label="port>orignal"];
+    "80c42afa-b52b-4308-87ab-645c3fec6c6c" [shape=invhouse, label="orignaldata"];
+    "b7de9004-c07e-4273-ba7e-fb434c2dcbac" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToMid2FromMid3"];
+    "b126d90e-09ee-4c98-a36d-f7af4ad4f0ab" -> "6f72632e-1e3b-4981-ac55-c7061428a8b0" [label="out>mid"];
+    "7c3102a6-f892-4b67-8043-b822e9c3b01d" -> "6f72632e-1e3b-4981-ac55-c7061428a8b0" [label="out>orignal"];
+    "6f72632e-1e3b-4981-ac55-c7061428a8b0" -> "7d96dbf3-0c67-44b1-87b6-31978346cbf1" [label="joined>in"];
+    "6f72632e-1e3b-4981-ac55-c7061428a8b0" -> "b7de9004-c07e-4273-ba7e-fb434c2dcbac" [label="joined>mid3"];
+    "80c42afa-b52b-4308-87ab-645c3fec6c6c" -> "b126d90e-09ee-4c98-a36d-f7af4ad4f0ab" [label="port>orignal"];
+    "80c42afa-b52b-4308-87ab-645c3fec6c6c" -> "7c3102a6-f892-4b67-8043-b822e9c3b01d" [label="port>in"];
 }

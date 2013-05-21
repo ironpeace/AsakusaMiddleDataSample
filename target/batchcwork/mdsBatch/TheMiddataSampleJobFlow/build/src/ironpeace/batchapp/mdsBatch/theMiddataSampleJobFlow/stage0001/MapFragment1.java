@@ -1,27 +1,19 @@
 package ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0001;
 import com.asakusafw.runtime.core.Result;
-import ironpeace.modelgen.dmdl.model.Middata;
 import ironpeace.modelgen.dmdl.model.OriginalData;
-import ironpeace.operator.MiddleDataSampleOperatorImpl;
 /**
- * {@code [orignal->MiddleDataSampleOperator.convertToMidFromOriginal(operator#40515936)]}の処理を担当するマッププログラムの断片。
+ * {@code [in->padding(pseud#840529455)]}の処理を担当するマッププログラムの断片。
  */
 @SuppressWarnings("deprecation") public final class MapFragment1 implements Result<OriginalData> {
-    private final Result<OriginalData> original;
-    private final Result<Middata> out;
-    private MiddleDataSampleOperatorImpl op = new MiddleDataSampleOperatorImpl();
+    private final Result<OriginalData> out;
     /**
      * インスタンスを生成する。
-     * @param original {@code MiddleDataSampleOperator.convertToMidFromOriginal#original}への出力
-     * @param out {@code MiddleDataSampleOperator.convertToMidFromOriginal#out}への出力
+     * @param out {@code padding#out}への出力
      */
-    public MapFragment1(Result<OriginalData> original, Result<Middata> out) {
-        this.original = original;
+    public MapFragment1(Result<OriginalData> out) {
         this.out = out;
     }
     @Override public void add(OriginalData result) {
-        Middata v = this.op.convertToMidFromOriginal(result);
-        this.original.add(result);
-        this.out.add(v);
+        this.out.add(result);
     }
 }

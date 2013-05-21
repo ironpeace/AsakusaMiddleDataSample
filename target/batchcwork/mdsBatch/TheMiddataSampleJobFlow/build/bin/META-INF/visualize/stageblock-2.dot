@@ -1,19 +1,18 @@
 digraph {
-    "a3ec22b0-1206-40d5-a693-6717e9dab75e" [shape=invhouse, label="orignaldata"];
-    "1471ee4b-6390-48b1-814c-38a9fc11c59e" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinOriginalAndMid"];
-    "92555207-9cb0-432f-b9c5-94ec33b8ee59" [shape=invhouse, label="result"];
-    subgraph "cluster_e5fb4a12-fac3-4d61-bcaa-575551fed5bf" {
+    "77bdfe85-438c-43bd-ad11-97e160756614" [shape=invhouse, label="result"];
+    "384c1bfe-49c2-432c-aaeb-c0610639f70b" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinOriginalAndMid"];
+    subgraph "cluster_3c11466f-f311-433f-bc3d-93168f4e60a2" {
         label = "stage0002";
         style = bold;
-        "f023b84c-d00e-4b61-adac-8e0b6c58a78c" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToResult"];
-        "cd6f4d7a-0ca8-4bb4-bc1a-c376bd54afa6" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinMid3AndMid2"];
-        "731914b6-85c1-4146-b26b-c26dde1b41b2" [shape=point];
-        "98e96299-6635-441e-81cb-c227f6579ffd" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToMid2FromOriginalAndMid"];
+        "17650a5b-8014-4583-afd1-5fb1e233db9b" [shape=point];
+        "97883fa1-c77b-4601-9ba3-ae98c1e9c732" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToMid2FromMid3"];
+        "036a4215-3ed4-40bf-a7f1-23ff93a90c5f" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToResult"];
+        "ba4553a1-8029-46b9-ab89-62d98971ec31" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinMid3AndMid2"];
     }
-    "731914b6-85c1-4146-b26b-c26dde1b41b2" -> "cd6f4d7a-0ca8-4bb4-bc1a-c376bd54afa6" [label="out>mid3"];
-    "98e96299-6635-441e-81cb-c227f6579ffd" -> "cd6f4d7a-0ca8-4bb4-bc1a-c376bd54afa6" [label="out>mid2"];
-    "f023b84c-d00e-4b61-adac-8e0b6c58a78c" -> "92555207-9cb0-432f-b9c5-94ec33b8ee59" [label="out>port"];
-    "cd6f4d7a-0ca8-4bb4-bc1a-c376bd54afa6" -> "f023b84c-d00e-4b61-adac-8e0b6c58a78c" [label="joined>pre"];
-    "a3ec22b0-1206-40d5-a693-6717e9dab75e" -> "98e96299-6635-441e-81cb-c227f6579ffd" [label="port>orignal"];
-    "1471ee4b-6390-48b1-814c-38a9fc11c59e" -> "731914b6-85c1-4146-b26b-c26dde1b41b2" [label="joined>in"];
+    "384c1bfe-49c2-432c-aaeb-c0610639f70b" -> "97883fa1-c77b-4601-9ba3-ae98c1e9c732" [label="joined>mid3"];
+    "384c1bfe-49c2-432c-aaeb-c0610639f70b" -> "17650a5b-8014-4583-afd1-5fb1e233db9b" [label="joined>in"];
+    "97883fa1-c77b-4601-9ba3-ae98c1e9c732" -> "ba4553a1-8029-46b9-ab89-62d98971ec31" [label="out>mid2"];
+    "17650a5b-8014-4583-afd1-5fb1e233db9b" -> "ba4553a1-8029-46b9-ab89-62d98971ec31" [label="out>mid3"];
+    "036a4215-3ed4-40bf-a7f1-23ff93a90c5f" -> "77bdfe85-438c-43bd-ad11-97e160756614" [label="out>port"];
+    "ba4553a1-8029-46b9-ab89-62d98971ec31" -> "036a4215-3ed4-40bf-a7f1-23ff93a90c5f" [label="joined>pre"];
 }

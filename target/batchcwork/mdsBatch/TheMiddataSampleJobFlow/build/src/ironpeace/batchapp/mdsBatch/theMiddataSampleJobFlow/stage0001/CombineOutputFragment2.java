@@ -3,7 +3,7 @@ import com.asakusafw.runtime.core.Result;
 import ironpeace.modelgen.dmdl.model.Middata;
 import org.apache.hadoop.mapreduce.TaskInputOutputContext;
 /**
- * {@code mid->MiddleDataSampleOperator.joinOriginalAndMid(operator#757856402)}へのシャッフル処理を担当するプログラムの断片。
+ * {@code mid->MiddleDataSampleOperator.joinOriginalAndMid(operator#1393000393)}へのシャッフル処理を担当するプログラムの断片。
  */
 @SuppressWarnings("deprecation") public final class CombineOutputFragment2 implements Result<Middata> {
     private final TaskInputOutputContext<?, ?, ? super ShuffleKey, ? super ShuffleValue> collector;

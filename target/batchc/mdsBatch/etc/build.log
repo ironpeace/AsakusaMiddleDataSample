@@ -1,8 +1,8 @@
 core.batchId = mdsBatch
-core.buildId = d8faf8ed-1ace-4a4c-a365-9adc8e9545d4
+core.buildId = 400d5a74-709f-4217-ab5c-81b898caeed0
 ASAKUSA_HOME = /Users/ITPUser/dev/asakusa/asakusa-develop/asakusa
 com.asakusafw.batchapp.build.java.version = 1.6.0_45
-com.asakusafw.batchapp.build.timestamp = 2013-05-17 13:40:15
+com.asakusafw.batchapp.build.timestamp = 2013-05-21 18:47:17
 com.asakusafw.batchapp.project.version = 1.0-SNAPSHOT
 com.asakusafw.compiler.options = 
 com.asakusafw.framework.version = 0.4.0

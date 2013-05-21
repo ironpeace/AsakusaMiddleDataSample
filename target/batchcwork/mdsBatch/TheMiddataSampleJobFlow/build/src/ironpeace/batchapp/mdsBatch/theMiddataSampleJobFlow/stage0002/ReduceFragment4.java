@@ -5,7 +5,7 @@ import ironpeace.modelgen.dmdl.model.Middata3;
 import ironpeace.modelgen.dmdl.model.PreResult;
 /**
  * {@code 
-         * [mid3->MiddleDataSampleOperator.joinMid3AndMid2(operator#1624207630), mid2->MiddleDataSampleOperator.joinMid3AndMid2(operator#1624207630)]
+         * [mid3->MiddleDataSampleOperator.joinMid3AndMid2(operator#40515936), mid2->MiddleDataSampleOperator.joinMid3AndMid2(operator#40515936)]
          * }の処理を担当するマッププログラムの断片。
  */
 @SuppressWarnings("deprecation") public final class ReduceFragment4 extends com.asakusafw.runtime.flow.Rendezvous<

@@ -3,7 +3,6 @@ import com.asakusafw.runtime.stage.AbstractStageClient;
 import com.asakusafw.runtime.stage.StageInput;
 import com.asakusafw.runtime.stage.StageOutput;
 import com.asakusafw.runtime.stage.StageResource;
-import com.asakusafw.runtime.stage.input.BridgeInputFormat;
 import com.asakusafw.runtime.stage.input.TemporaryInputFormat;
 import com.asakusafw.runtime.stage.output.TemporaryOutputFormat;
 import ironpeace.modelgen.dmdl.model.Result;
@@ -32,16 +31,9 @@ public final class StageClient extends AbstractStageClient {
         List<StageInput> results = new ArrayList<StageInput>();
         Map<String, String> attributes = null;
         attributes = new HashMap<String, String>();
-        attributes.put("basePath", "ironpeace/input/");
-        attributes.put("resourcePath", "originaldata.csv");
-        attributes.put("dataClass", "ironpeace.modelgen.dmdl.model.OriginalData");
-        attributes.put("formatClass", "ironpeace.modelgen.dmdl.csv.OriginalDataCsvFormat");
-        results.add(new StageInput("__DIRECTIO__/orignaldata/ironpeace/input", BridgeInputFormat.class, StageMapper1.
-                class, attributes));
-        attributes = new HashMap<String, String>();
         results.add(new StageInput(
                 "target/hadoopwork/${execution_id}/mdsBatch/TheMiddataSampleJobFlow/stage0001/result0-*", 
-                TemporaryInputFormat.class, StageMapper2.class, attributes));
+                TemporaryInputFormat.class, StageMapper1.class, attributes));
         return results;
     }
     @Override protected List<StageOutput> getStageOutputs() {

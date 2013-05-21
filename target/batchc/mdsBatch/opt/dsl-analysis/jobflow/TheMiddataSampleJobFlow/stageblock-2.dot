@@ -1,19 +1,18 @@
 digraph {
-    "df17c6c8-e5e5-480d-8b51-6510c2c82180" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinOriginalAndMid"];
-    subgraph "cluster_4d40630f-07f3-4d72-8430-0cfea25353d8" {
+    "6e989493-c2b3-4a10-8621-f05b79da2c30" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinOriginalAndMid"];
+    subgraph "cluster_32e337cd-8bd4-4b5d-8a9e-d43c851a3ff7" {
         label = "stage0002";
         style = bold;
-        "f194c7f0-6dc2-47e5-a42a-5f83f2ebc70d" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToMid2FromOriginalAndMid"];
-        "b11ecfa8-248a-4255-b6e9-ad1268183ea1" [shape=point];
-        "6fd82d81-d70d-4530-92c6-ff2a18c1ecfc" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinMid3AndMid2"];
-        "194c4eaf-7268-4bdd-8d20-9bdb2d046f82" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToResult"];
+        "05f2b12d-6d86-4a3c-a7ca-741a42382f15" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinMid3AndMid2"];
+        "dad1b06a-73e3-4c58-8135-9bf420209229" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToResult"];
+        "bd7ab677-7702-4a09-a4b7-6c1cd81842fb" [shape=point];
+        "cb6c29d8-01a7-4a9a-905a-f4910c319502" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToMid2FromMid3"];
     }
-    "0b6fa51a-3f86-4052-8315-8ded660daf2f" [shape=invhouse, label="orignaldata"];
-    "82b6c26b-f2d8-4d92-820d-f3ef9316487b" [shape=invhouse, label="result"];
-    "0b6fa51a-3f86-4052-8315-8ded660daf2f" -> "f194c7f0-6dc2-47e5-a42a-5f83f2ebc70d" [label="port>orignal"];
-    "df17c6c8-e5e5-480d-8b51-6510c2c82180" -> "b11ecfa8-248a-4255-b6e9-ad1268183ea1" [label="joined>in"];
-    "f194c7f0-6dc2-47e5-a42a-5f83f2ebc70d" -> "6fd82d81-d70d-4530-92c6-ff2a18c1ecfc" [label="out>mid2"];
-    "b11ecfa8-248a-4255-b6e9-ad1268183ea1" -> "6fd82d81-d70d-4530-92c6-ff2a18c1ecfc" [label="out>mid3"];
-    "194c4eaf-7268-4bdd-8d20-9bdb2d046f82" -> "82b6c26b-f2d8-4d92-820d-f3ef9316487b" [label="out>port"];
-    "6fd82d81-d70d-4530-92c6-ff2a18c1ecfc" -> "194c4eaf-7268-4bdd-8d20-9bdb2d046f82" [label="joined>pre"];
+    "1b002792-88ff-4a32-8409-7b7097b5fe22" [shape=invhouse, label="result"];
+    "cb6c29d8-01a7-4a9a-905a-f4910c319502" -> "05f2b12d-6d86-4a3c-a7ca-741a42382f15" [label="out>mid2"];
+    "bd7ab677-7702-4a09-a4b7-6c1cd81842fb" -> "05f2b12d-6d86-4a3c-a7ca-741a42382f15" [label="out>mid3"];
+    "dad1b06a-73e3-4c58-8135-9bf420209229" -> "1b002792-88ff-4a32-8409-7b7097b5fe22" [label="out>port"];
+    "05f2b12d-6d86-4a3c-a7ca-741a42382f15" -> "dad1b06a-73e3-4c58-8135-9bf420209229" [label="joined>pre"];
+    "6e989493-c2b3-4a10-8621-f05b79da2c30" -> "cb6c29d8-01a7-4a9a-905a-f4910c319502" [label="joined>mid3"];
+    "6e989493-c2b3-4a10-8621-f05b79da2c30" -> "bd7ab677-7702-4a09-a4b7-6c1cd81842fb" [label="joined>in"];
 }

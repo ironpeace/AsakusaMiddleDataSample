@@ -1,16 +1,18 @@
 digraph {
-    subgraph "cluster_896e204d-808d-4b7c-82d2-b45d399202a9" {
+    "03b00177-18c1-4567-94a6-6e7a05441e00" [shape=point];
+    "0854d0e9-d35d-4e3f-a73d-7b8f6e143515" [shape=invhouse, label="orignaldata"];
+    subgraph "cluster_19386a91-ba82-4fce-bc5e-d02a7be77ec2" {
         label = "stage0001";
         style = bold;
-        "43e74f30-4256-48a4-8b24-8bca9233c8df" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinOriginalAndMid"];
-        "ae99530b-c294-4026-8e1d-30aa94157f5e" [shape=point];
-        "4a566500-fba6-4d2f-a8a6-2e6be70aff68" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToMidFromOriginal"];
+        "e98fd9a0-c797-4833-8515-c11ed6297913" [shape=box, label="@MasterJoin\nMiddleDataSampleOperator.joinOriginalAndMid"];
+        "58e30883-ba98-47bd-aea6-c57cd9ca8b92" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToMidFromOriginal"];
+        "0b84b144-32da-433a-bf2c-ec1cb1c7a744" [shape=point];
     }
-    "bdc8859d-cf5f-449d-b767-4e243f5c1fff" [shape=point];
-    "6fc5fa10-603d-44a0-89fc-4c4bf9373542" [shape=invhouse, label="orignaldata"];
-    "ae99530b-c294-4026-8e1d-30aa94157f5e" -> "43e74f30-4256-48a4-8b24-8bca9233c8df" [label="out>orignal"];
-    "4a566500-fba6-4d2f-a8a6-2e6be70aff68" -> "43e74f30-4256-48a4-8b24-8bca9233c8df" [label="out>mid"];
-    "43e74f30-4256-48a4-8b24-8bca9233c8df" -> "bdc8859d-cf5f-449d-b767-4e243f5c1fff" [label="joined>in"];
-    "6fc5fa10-603d-44a0-89fc-4c4bf9373542" -> "ae99530b-c294-4026-8e1d-30aa94157f5e" [label="port>in"];
-    "6fc5fa10-603d-44a0-89fc-4c4bf9373542" -> "4a566500-fba6-4d2f-a8a6-2e6be70aff68" [label="port>orignal"];
+    "88c73708-b71f-4041-9e92-c5ab58f4b79d" [shape=box, label="@Convert\nMiddleDataSampleOperator.convertToMid2FromMid3"];
+    "58e30883-ba98-47bd-aea6-c57cd9ca8b92" -> "e98fd9a0-c797-4833-8515-c11ed6297913" [label="out>mid"];
+    "0b84b144-32da-433a-bf2c-ec1cb1c7a744" -> "e98fd9a0-c797-4833-8515-c11ed6297913" [label="out>orignal"];
+    "e98fd9a0-c797-4833-8515-c11ed6297913" -> "03b00177-18c1-4567-94a6-6e7a05441e00" [label="joined>in"];
+    "e98fd9a0-c797-4833-8515-c11ed6297913" -> "88c73708-b71f-4041-9e92-c5ab58f4b79d" [label="joined>mid3"];
+    "0854d0e9-d35d-4e3f-a73d-7b8f6e143515" -> "58e30883-ba98-47bd-aea6-c57cd9ca8b92" [label="port>orignal"];
+    "0854d0e9-d35d-4e3f-a73d-7b8f6e143515" -> "0b84b144-32da-433a-bf2c-ec1cb1c7a744" [label="port>in"];
 }

@@ -9,18 +9,17 @@ flow: TheMiddataSampleJobFlow
         main:
             stage: ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0001.StageClient
                 mapper: ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0001.StageMapper1
-                    fragment: ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0001.MapFragment2
                     fragment: ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0001.MapFragment1
+                    fragment: ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0001.MapFragment2
                         operator: ironpeace.operator.MiddleDataSampleOperator#convertToMidFromOriginal([class ironpeace.modelgen.dmdl.model.OriginalData])[]
                 reducer: ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0001.StageReducer
                     fragment: ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0001.ReduceFragment3
                         operator: ironpeace.operator.MiddleDataSampleOperator#joinOriginalAndMid([class ironpeace.modelgen.dmdl.model.OriginalData, class ironpeace.modelgen.dmdl.model.Middata])[]
             stage: ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0002.StageClient
                 mapper: ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0002.StageMapper1
-                    fragment: ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0002.MapFragment1
-                        operator: ironpeace.operator.MiddleDataSampleOperator#convertToMid2FromOriginalAndMid([class ironpeace.modelgen.dmdl.model.OriginalData])[]
-                mapper: ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0002.StageMapper2
                     fragment: ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0002.MapFragment2
+                        operator: ironpeace.operator.MiddleDataSampleOperator#convertToMid2FromMid3([class ironpeace.modelgen.dmdl.model.Middata3])[]
+                    fragment: ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0002.MapFragment1
                 reducer: ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0002.StageReducer
                     fragment: ironpeace.batchapp.mdsBatch.theMiddataSampleJobFlow.stage0002.ReduceFragment4
                         operator: ironpeace.operator.MiddleDataSampleOperator#joinMid3AndMid2([class ironpeace.modelgen.dmdl.model.Middata3, class ironpeace.modelgen.dmdl.model.Middata2])[]

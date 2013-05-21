@@ -25,20 +25,39 @@ public abstract class MiddleDataSampleOperator {
 		mid.setMid2(orignal.getData2() + orignal.getData3());
 		return mid;
 	}
+
+	@MasterJoin
+	public abstract Middata3 joinOriginalAndMid(OriginalData orignal, Middata mid);
+
+//	@Convert
+//	public Middata2 convertToMid2FromOriginalAndMid(OriginalData orignal){
+//		mid2.setKeycode(mid.getKeycode());
+//		if(mid.getMid1() > orignal.getData3()){
+//			mid2.setAlert1AsString("A");
+//		}else{
+//			mid2.setAlert2AsString("B");
+//		}
+//		return mid2;
+//	}
 	
 	@Convert
-	public Middata2 convertToMid2FromOriginalAndMid(OriginalData orignal){
-		mid2.setKeycode(mid.getKeycode());
-		if(mid.getMid1() > orignal.getData3()){
+	public Middata2 convertToMid2FromMid3(Middata3 mid3){
+		mid2.setKeycode(mid3.getKeycode());
+
+		if(mid3.getMid1() > mid3.getData3()){
 			mid2.setAlert1AsString("A");
+		}else{
+			mid2.setAlert1AsString("B");
+		}
+
+		if(mid3.getMid2() > mid3.getData1()){
+			mid2.setAlert2AsString("A");
 		}else{
 			mid2.setAlert2AsString("B");
 		}
+
 		return mid2;
 	}
-	
-	@MasterJoin
-	public abstract Middata3 joinOriginalAndMid(OriginalData orignal, Middata mid);
 	
 	@MasterJoin
 	public abstract PreResult joinMid3AndMid2(Middata3 mid3, Middata2 mid2);

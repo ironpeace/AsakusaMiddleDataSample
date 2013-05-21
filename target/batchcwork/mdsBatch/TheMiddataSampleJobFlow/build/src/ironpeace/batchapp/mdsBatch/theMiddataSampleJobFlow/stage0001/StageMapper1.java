@@ -7,22 +7,22 @@ import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.mapreduce.Mapper;
 /**
  * {@code 
-         * [in->padding(pseud#1654792719){owner=FlowBlock&#64;1351281524}, orignal->MiddleDataSampleOperator.convertToMidFromOriginal(operator#40515936){owner=FlowBlock&#64;1351281524}]
+         * [in->padding(pseud#840529455){owner=FlowBlock&#64;1090032292}, orignal->MiddleDataSampleOperator.convertToMidFromOriginal(operator#631120219){owner=FlowBlock&#64;1090032292}]
          * }の処理を担当するマッププログラム。
  */
 @SuppressWarnings("deprecation") public final class StageMapper1 extends Mapper<NullWritable, OriginalData, ShuffleKey, 
         ShuffleValue> {
     private OriginalData cache = new OriginalData();
     private RuntimeResourceManager runtimeResourceManager;
-    private MapFragment1 line0;
-    private MapFragment2 line;
+    private MapFragment2 line0;
+    private MapFragment1 line;
     @Override public void setup(Context context) throws IOException, InterruptedException {
         this.runtimeResourceManager = new RuntimeResourceManager(context.getConfiguration());
         this.runtimeResourceManager.setup();
         final MapOutputFragment1 shuffle = new MapOutputFragment1(context);
-        this.line = new MapFragment2(shuffle);
         final MapOutputFragment2 shuffle0 = new MapOutputFragment2(context);
-        this.line0 = new MapFragment1(new VoidResult<OriginalData>(), shuffle0);
+        this.line0 = new MapFragment2(new VoidResult<OriginalData>(), shuffle0);
+        this.line = new MapFragment1(shuffle);
     }
     @Override public void cleanup(Context context) throws IOException, InterruptedException {
         this.runtimeResourceManager.cleanup();
